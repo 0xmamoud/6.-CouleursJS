@@ -6,11 +6,8 @@ const body = document.querySelector("body");
 const orientationValue = document.querySelector('.orientation-value');
 const labels = document.querySelectorAll("div.input-group label");
 
-
-
-
-body.addEventListener("input", updateColor);
 body.style.background = `linear-gradient(90deg, ${inputs[0].value}, ${inputs[1].value})`;
+body.addEventListener("input", updateColor);
 
 function updateColor() {
     if(body) {
@@ -24,15 +21,12 @@ function updateColor() {
 }
 
 const copyBtn = document.querySelector(".copy-btn");
-copyBtn.addEventListener("click", function() {
-    copyText();
-});
+copyBtn.addEventListener("click", copyText);
 
 function copyText() {
-    const textToCopy = `linear-gradient( ${orientationValue.textContent.replace("°","")}deg ,${labels[0].textContent},${labels[1].textContent})`
+    const textToCopy = `linear-gradient(${orientationValue.textContent.replace("°","")}deg, ${labels[0].textContent}, ${labels[1].textContent})`
     navigator.clipboard.writeText(textToCopy)
         .then(() => console.log(`texte copier dans le papier presse: ${textToCopy}`))
         .catch(() => console.error("woops"));
 
 }
-
